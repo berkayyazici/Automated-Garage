@@ -7,4 +7,4 @@ Cars have 3 different sizes; small, medium and large. There are a certain number
 
 If any of these spots are full, you cannot park your car.
 
-Note : Spot numbers reset everytime that we run app. So, you can fix that bug. 
+Note : Spot numbers reset every time that we run app. I believe you can fix that bug :) 
