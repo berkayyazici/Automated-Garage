@@ -173,6 +173,28 @@ namespace AutomatedGarage.Controllers
 
             return Ok(car);
         }
+        
+        
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetCarbyPlateandTicketNumber(int ticketNumber, int platenumber)
+        {
+            var car = await (from cars in _dbContext.Cars
+                             where cars.ticketNumber == ticketNumber
+                             where cars.PlateNumber == platenumber
+                             select new
+                             {
+                                 Id = cars.Id,
+                                 PlateNumber = cars.PlateNumber,
+                                 Brand = cars.Brand,
+                                 Size = cars.Size,
+                                 ParkSpotId = cars.ParkSpotId,
+                                 ParkSpotFloor = cars.ParkSpotFloor,
+                                 ticketNumber = cars.ticketNumber,
+                                 ParkSpotName = cars.ParkSpotName,
+                                 ParkSpotDate = cars.ParkSpotDate
+                             }).ToListAsync();
+            return Ok(car);
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAllCars()
